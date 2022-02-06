@@ -1,9 +1,14 @@
-from carter_flask import db
+from sqlalchemy import Column, Integer, String, DateTime, Text
 
-class PageSnapshot(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    timestamp = db.Column(db.DateTime, nullable=False)
-    url = db.Column(db.String(255), nullable=False)
-    html_content = db.Column(db.Text)
+from db import Base
 
-db.create_all()
+class PageSnapshot(Base):
+    __tablename__ = "page_snapshots"
+
+    id = Column(Integer, primary_key=True)
+    timestamp = Column(DateTime, nullable=False)
+    url = Column(String(255), nullable=False)
+    html_content = Column(Text)
+
+    def __repr__(self):
+        return "<PageSnapshot(id='%d', timestamp='%s', url='%s')>" % (self.id, self.timestamp, self.url)
