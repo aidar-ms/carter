@@ -5,7 +5,7 @@ description = ""
 authors = ["Aidar Mamytov"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "3.8.12"
 beautifulsoup4 = "^4.10.0"
 requests = "^2.27.1"
 notebook = "^6.4.8"
