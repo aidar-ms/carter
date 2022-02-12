@@ -1,3 +1,8 @@
-SECRET_KEY = "non_production_not_super_secret_key"
-SQLALCHEMY_DATABASE_URI = "postgresql://user:pass1234@localhost:5432/carter"
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+import os
+from dotenv import load_dotenv
+
+if os.environ.get("ENVIRONMENT") == "dev":
+    load_dotenv()
+
+DATABASE_URL = os.environ.get("DATABASE_URL")
+REDIS_URL = os.environ.get("REDIS_URL")

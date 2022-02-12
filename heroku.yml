@@ -1,0 +1,11 @@
+build:
+  docker:
+    beat: Dockerfile.beat
+    worker: Dockerfile.worker
+release:
+  command:
+    - alembic upgrade head
+  image: beat
+run:
+  web: bundle exec puma -C config/puma.rb
+  worker: python myworker.py
