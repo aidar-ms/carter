@@ -13,11 +13,11 @@ app = Celery("celery_carter", backend=base.REDIS_URL, broker=base.REDIS_URL)
 def setup_periodic_tasks(sender, **kwargs):
     # Task to parse Spotify
     sender.add_periodic_task(
-        crontab(), parse_blog.s("https://engineering.atspotify.com/"), name='Parse Spotify'
+        crontab(minute="0", hour="*/12"), parse_blog.s("https://engineering.atspotify.com/"), name='Parse Spotify'
     )
     # Task to parse Google
     sender.add_periodic_task(
-        crontab(), parse_blog.s("https://developers.googleblog.com/"), name='Parse Google'
+        crontab(minute="0", hour="*/12"), parse_blog.s("https://developers.googleblog.com/"), name='Parse Google'
     )
 
 
